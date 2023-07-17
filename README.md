@@ -42,7 +42,7 @@ Please bear in mind that I'm still learning, so your patience and guidance are g
 
 ## License
 
-This project is licensed under the [MIT License](link_to_license_file). You are free to use, modify, and distribute this software.
+This project is licensed under the [MIT License](https://github.com/ShaikRehan123/devsynced/blob/main/LICENSE). You are free to use, modify, and distribute this software.
 
 ## Contact
 
