@@ -26,7 +26,7 @@ export const routes: Route[] = [
   },
   {
     path: "/explore",
-    name: "Explore Projects",
+    name: "Projects",
   },
   {
     path: "/forum",

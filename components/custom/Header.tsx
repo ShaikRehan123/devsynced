@@ -13,9 +13,11 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { useSession } from "next-auth/react";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -26,15 +28,37 @@ const Header = () => {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
   return (
     <div className="sticky top-0 z-10 flex items-center justify-between w-full h-20 px-4 shadow-md dark:shadow-gray-900 bg-inherit">
-      <h1 className="text-2xl font-bold font-Montserrat">DevSynced</h1>
+      <Link
+        className="text-2xl font-bold font-SpaceGrotesk cursor-pointer"
+        href="/"
+      >
+        DevSynced
+      </Link>
       <nav className="items-center hidden gap-4 md:flex">
         {routes.map((route) => (
           <CustomLink href={route.path} key={route.path}>
             {route.name}
           </CustomLink>
         ))}
+        {session !== undefined && session !== null && (
+          <Button asChild>
+            <Link href="/dashboard" className="font-SpaceGrotesk">
+              Dashboard
+            </Link>
+          </Button>
+        )}
+
+        {session !== undefined && session === null && (
+          <Button asChild>
+            <Link href="/api/auth/signin" className="font-SpaceGrotesk">
+              Sign In
+            </Link>
+          </Button>
+        )}
+
         <ThemeToggle />
       </nav>
 
@@ -60,12 +84,13 @@ const Header = () => {
 interface CustomLinkProps {
   href: string;
   children: React.ReactNode;
+  className?: string;
 }
 
-const CustomLink = ({ href, children }: CustomLinkProps) => {
+const CustomLink = ({ href, children, className }: CustomLinkProps) => {
   return (
     <Link
-      className="transition-all dark:hover:text-gray-300 hover:text-blue-400 font-Lato"
+      className={`transition-all dark:hover:text-gray-300 hover:text-blue-400 font-Lato ${className}`}
       href={href}
     >
       {children}

@@ -71,11 +71,12 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        Montserrat: ["Montserrat", "sans-serif"],
-        Lato: ["Lato", "sans-serif"],
-        Roboto: ["Roboto", "sans-serif"],
+        SpaceGrotesk: ["var(--font-grotesk)", "sans-serif"],
+        Montserrat: ["var(--font-montserrat)", "sans-serif"],
+        Lato: ["var(--font-lato)", "sans-serif"],
+        Roboto: ["var(--font-roboto)", "sans-serif"],
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
